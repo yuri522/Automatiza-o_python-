@@ -10,7 +10,21 @@ def simular_processamento():
 @app.route('/')
 def pagina_principal():
     simular_processamento()
-    return jsonify({"Mensagem: Pagina inicial"})
+    return jsonify({"Mensagem": "Pagina inicial"})
 
-if __name__ =="__name__":
+@app.route('/dados/busca')
+def buscar_dados():
+    simular_processamento()
+    return jsonify({"resultado": {"item1" , "item2" , "item3" }})
+
+@app.route('/dados/buscar/complexa')
+def buscar_dados_complexo():
+    simular_processamento()
+    return jsonify ({"resultado": [{id: i, "valor": random.randint (1, 1000)} for i in range(5) ]})
+                                                                                          
+
+ 
+if __name__ == '__name__':
     app.run(port=8000)
+
+
