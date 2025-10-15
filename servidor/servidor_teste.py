@@ -21,8 +21,11 @@ def buscar_dados():
 def buscar_dados_complexo():
     simular_processamento()
     return jsonify ({"resultado": [{id: i, "valor": random.randint (1, 1000)} for i in range(5) ]})
-                                                                                          
 
+@app.route('/processo', methods ={'POST'} )
+def processar():
+    simular_processamento()
+    return jsonify({"status": "processado" , "dados": request.json })
  
 if __name__ == '__name__':
     app.run(port=8000)
